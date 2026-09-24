@@ -28,7 +28,7 @@ public final class Configs {
                     .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
                     // These are example gains you may need to them for your own robot!
                     .pid(0.04, 0, 0)
-                    .dFilter(drivingVelocityFeedForward)        // if driving fails, comment this
+                    .velocityFF(drivingVelocityFeedForward)        // if driving fails, comment this
                     //.velocityFF(drivingVelocityFeedForward)   // and uncomment this (velovityFF is deprecated though)
                     .outputRange(-1, 1);
                     
@@ -37,7 +37,7 @@ public final class Configs {
 
         public static SparkMaxConfig getTurningConfig() {
             SparkMaxConfig turningConfig = new SparkMaxConfig();
-            double turningFactor = 2 * Math.PI;                 // might increase turning speed
+            double turningFactor = Math.PI;                 // might increase turning speed
 
             turningConfig
                     .idleMode(IdleMode.kBrake)
@@ -55,7 +55,7 @@ public final class Configs {
                     .outputRange(-1, 1)
                     // Enable PID wrap around for the turning motor.
                     .positionWrappingEnabled(true)
-                    .positionWrappingInputRange(0, turningFactor);
+                    .positionWrappingInputRange(-Math.PI, turningFactor);
                     
             return turningConfig;
         }

@@ -45,8 +45,8 @@ public class RobotContainer {
     driveSubsystem.setDefaultCommand(
       new RunCommand(
         () -> {
-          double leftX = MathUtil.applyDeadband(driverController.getLeftY() * -3.0, OIConstants.kDriveDeadband);
-          double leftY = MathUtil.applyDeadband(driverController.getLeftX() * -3.0, OIConstants.kDriveDeadband);
+          double leftX = MathUtil.applyDeadband(driverController.getLeftY() * -1.0, OIConstants.kDriveDeadband);
+          double leftY = MathUtil.applyDeadband(driverController.getLeftX() * -1.0, OIConstants.kDriveDeadband);
           double rightX = MathUtil.applyDeadband(driverController.getRightX() * -3.0, OIConstants.kDriveDeadband);
 
           // Test individual motors
