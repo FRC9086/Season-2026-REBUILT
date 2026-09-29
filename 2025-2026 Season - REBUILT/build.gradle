@@ -8,6 +8,13 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
+// Add local flat repository for your offline .jar file
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 def ROBOT_MAIN_CLASS = "frc.robot.Main"
 
 // Define my targets (RoboRIO) and artifacts (deployable files)
@@ -53,6 +60,9 @@ def includeDesktopSupport = false
 // Defining my dependencies. In this case, WPILib (+ friends), and vendor libraries.
 // Also defines JUnit 5.
 dependencies {
+    // Manually include the LumynLabs jar from the local libs folder
+    implementation files('libs/LumynLabs-java-2026.2.0.jar')
+
     annotationProcessor wpi.java.deps.wpilibAnnotations()
     implementation wpi.java.deps.wpilib()
     implementation wpi.java.vendor.java()
