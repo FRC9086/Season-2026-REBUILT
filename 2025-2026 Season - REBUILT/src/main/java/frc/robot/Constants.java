@@ -13,7 +13,40 @@ import edu.wpi.first.math.util.Units;
 // ========================================================
 // ========================================================
 public final class Constants {
-  public static final class DriveConstants {
+  public static final class CANConstants {
+    
+    // Driving motor CAN IDs
+    // SPARK MAX CAN IDs
+    public static final int kFrontLeftDrivingCanId  =  2;
+    public static final int kRearLeftDrivingCanId   =  4;
+    public static final int kFrontRightDrivingCanId =  8;
+    public static final int kRearRightDrivingCanId  =  6;
+    
+    // SPARK FLEX CAN IDs
+    public static final int kFrontLeftTurningCanId  =  3;
+    public static final int kRearLeftTurningCanId   =  5;
+    public static final int kFrontRightTurningCanId =  9;
+    public static final int kRearRightTurningCanId  =  7;
+
+    // Utilities can IDs
+    public static final int kSpinningMotor = 10;
+    public static final int kUpDownMotor = 11;
+
+    public static final int kPullerMotorId = 12;      
+    public static final int kShootingMotorId = 13;
+  }
+
+  // Driver Station / controller constants
+  public static final class OIConstants {
+
+    public static final int kDriverControllerPort = 1;
+    public static final int kOperatorControllerPort = 0;
+    public static final int kScoringControllerPort = 999; 
+    public static final double kDriveDeadband = 0.15; // 0.05
+  }
+  
+  public static final class SwerveConstants {
+
     // Driving Parameters - Note that these are not the maximum capable speeds of
     // the robot, rather the allowed maximum speeds
     public static final double kMaxSpeedMetersPerSecond = 10;                                // meters per second
@@ -37,41 +70,8 @@ public final class Constants {
     public static final double kBackLeftChassisAngularOffset    = Math.PI;
     public static final double kBackRightChassisAngularOffset   = 0;
 
-    // SPARK MAX CAN IDs
-    public static final int kFrontLeftDrivingCanId  =  2;
-    public static final int kRearLeftDrivingCanId   =  4;
-    public static final int kFrontRightDrivingCanId =  8;
-    public static final int kRearRightDrivingCanId  =  6;
-    
-    // SPARK FLEX CAN IDs
-    public static final int kFrontLeftTurningCanId  =  3;
-    public static final int kRearLeftTurningCanId   =  5;
-    public static final int kFrontRightTurningCanId =  9;
-    public static final int kRearRightTurningCanId  =  7;
-
     // Boolean for Gyro 
     public static final boolean kGyroReversed = true;
-  }
-
-  // ////////////////////////////
-  // //////// CONSTANTS /////////
-  // ////////////////////////////
-
-  public static final class OIConstants {
-    public static final int kDriverControllerPort = 1;
-    public static final int kOperatorControllerPort = 0;
-    public static final int kScoringControllerPort = 999; 
-    public static final double kDriveDeadband = 0.15; // 0.05
-  }
-
-  public static final class IntakeConstants {
-    public static final int kSpinningMotor = 10;
-    public static final int kUpDownMotor = 11;
-  }
-
-  public static final class ShootConstants {
-    public static final int kPullerMotorId = 12;      
-    public static final int kShootingMotorId = 13;
   }
   
   // public static final class ArmConstants {

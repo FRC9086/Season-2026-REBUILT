@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.RuntimeType;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
+import frc.robot.Constants.CANConstants;
 import frc.robot.Robot;
 import frc.robot.handlers.PID;
 
@@ -34,10 +34,10 @@ public class IntakeSubsystem extends SubsystemBase{
     private Thread armThread;
 
     public IntakeSubsystem() {
-        intakeMotor = new SparkMax(Constants.IntakeConstants.kSpinningMotor, MotorType.kBrushless);
+        intakeMotor = new SparkMax(CANConstants.kSpinningMotor, MotorType.kBrushless);
         intakeEncoder = intakeMotor.getEncoder();
         
-        armMotor = new SparkMax(Constants.IntakeConstants.kUpDownMotor, MotorType.kBrushless);
+        armMotor = new SparkMax(CANConstants.kUpDownMotor, MotorType.kBrushless);
         armEncoder = armMotor.getEncoder();
         armClosedLoopController = armMotor.getClosedLoopController();
         

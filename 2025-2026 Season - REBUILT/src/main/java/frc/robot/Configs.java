@@ -37,8 +37,8 @@ public final class Configs {
 
         public static SparkMaxConfig getTurningConfig() {
             SparkMaxConfig turningConfig = new SparkMaxConfig();
-            double turningFactor = Math.PI;                 // might increase turning speed
-
+            double turningFactor = Math.PI;                     // might increase turning speed
+                                                                // used to be 2 * Math.PI
             turningConfig
                     .idleMode(IdleMode.kBrake)
                     .smartCurrentLimit(20);
@@ -55,7 +55,7 @@ public final class Configs {
                     .outputRange(-1, 1)
                     // Enable PID wrap around for the turning motor.
                     .positionWrappingEnabled(true)
-                    .positionWrappingInputRange(-Math.PI, turningFactor);
+                    .positionWrappingInputRange(-Math.PI, Math.PI);
                     
             return turningConfig;
         }

@@ -7,30 +7,29 @@ import com.studica.frc.AHRS;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
-import frc.robot.Constants.DriveConstants;
+import frc.robot.Constants.CANConstants;
+import frc.robot.Constants.SwerveConstants;;
 
 public class Drive {
     private final MAXSwerveModule m_frontLeft = new MAXSwerveModule(
-        DriveConstants.kFrontLeftDrivingCanId,
-        DriveConstants.kFrontLeftTurningCanId,
-        DriveConstants.kFrontLeftChassisAngularOffset);
+        CANConstants.kFrontLeftDrivingCanId,
+        CANConstants.kFrontLeftTurningCanId,
+        SwerveConstants.kFrontLeftChassisAngularOffset);
 
     private final MAXSwerveModule m_frontRight = new MAXSwerveModule(
-        DriveConstants.kFrontRightDrivingCanId,
-        DriveConstants.kFrontRightTurningCanId,
-        DriveConstants.kFrontRightChassisAngularOffset);
+        CANConstants.kFrontRightDrivingCanId,
+        CANConstants.kFrontRightTurningCanId,
+        SwerveConstants.kFrontRightChassisAngularOffset);
 
     private final MAXSwerveModule m_rearLeft = new MAXSwerveModule(
-        DriveConstants.kRearLeftDrivingCanId,
-        DriveConstants.kRearLeftTurningCanId,
-        DriveConstants.kBackLeftChassisAngularOffset);
+        CANConstants.kRearLeftDrivingCanId,
+        CANConstants.kRearLeftTurningCanId,
+        SwerveConstants.kBackLeftChassisAngularOffset);
 
     private final MAXSwerveModule m_rearRight = new MAXSwerveModule(
-        DriveConstants.kRearRightDrivingCanId,
-        DriveConstants.kRearRightTurningCanId,
-        DriveConstants.kBackRightChassisAngularOffset);
-
-
+        CANConstants.kRearRightDrivingCanId,
+        CANConstants.kRearRightTurningCanId,
+        SwerveConstants.kBackRightChassisAngularOffset);
 
     // Odometry class for tracking robot pose
 }
