@@ -14,6 +14,9 @@ import edu.wpi.first.math.util.Units;
 // ========================================================
 public final class Constants {
   public static final class CANConstants {
+
+    // Power Distrobution Hub CAN ID
+    public static final int kPDHCanId               =  1;
     
     // Driving motor CAN IDs
     // SPARK MAX CAN IDs

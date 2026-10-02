@@ -32,8 +32,8 @@ public class RobotContainer {
 
   // Controller
   // Driver is port 1 and Operator is port 0 under usb connections in Driver Station      // This can be changed in Constants.java
-  private final XboxController driverController = new XboxController(OIConstants.kDriverControllerPort);
-  private final XboxController operatorController = new XboxController(OIConstants.kOperatorControllerPort);
+  private final XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
+  private final XboxController m_operatorController = new XboxController(OIConstants.kOperatorControllerPort);
 
   public RobotContainer() {
     configureBindings();
@@ -44,12 +44,12 @@ public class RobotContainer {
     driveSubsystem.setDefaultCommand(
       new RunCommand(
         () -> {
-          double leftX = MathUtil.applyDeadband(driverController.getLeftY() * -1.0, OIConstants.kDriveDeadband);
-          double leftY = MathUtil.applyDeadband(driverController.getLeftX() * -1.0, OIConstants.kDriveDeadband);
-          double rightX = MathUtil.applyDeadband(driverController.getRightX() * -3.0, OIConstants.kDriveDeadband);
+          double leftX = MathUtil.applyDeadband(m_driverController.getLeftY() * -1.0, OIConstants.kDriveDeadband);
+          double leftY = MathUtil.applyDeadband(m_driverController.getLeftX() * -1.0, OIConstants.kDriveDeadband);
+          double rightX = MathUtil.applyDeadband(m_driverController.getRightX() * -3.0, OIConstants.kDriveDeadband);
 
           // Test individual motors
-          // Boolean[] buttons = {driverController.getXButton(), driverController.getYButton(), driverController.getAButton(), driverController.getBButton()};
+          // Boolean[] buttons = {m_driverController.getXButton(), m_driverController.getYButton(), m_driverController.getAButton(), m_driverController.getBButton()};
           
           driveSubsystem.drive(leftX, leftY, rightX, true, false);
         },
@@ -59,15 +59,15 @@ public class RobotContainer {
 
     intakeSubsystem.setDefaultCommand(
       new RunCommand(() -> {
-        double pullerSpool = operatorController.getRightTriggerAxis() * brev();
+        double pullerSpool = m_operatorController.getRightTriggerAxis() * brev();
 
         intakeSubsystem.setSpeed(pullerSpool);
       }, intakeSubsystem));
 
     shooterSubsystem.setDefaultCommand(
       new RunCommand(() -> {
-        double shooterSpool = operatorController.getLeftTriggerAxis() * brev();
-        //double pullTrigger = driverController.getRightTriggerAxis() == 1 ? 1 : 0;
+        double shooterSpool = m_operatorController.getLeftTriggerAxis() * brev();
+        //double pullTrigger = m_driverController.getRightTriggerAxis() == 1 ? 1 : 0;
 
         shooterSubsystem.startShootingSystem(shooterSpool);
         //shooterSubsystem.pullMotor(pullTrigger);
@@ -77,10 +77,10 @@ public class RobotContainer {
 
     // climbSubsystem.setDefaultCommand(
     //   new RunCommand(() -> {
-    //     //System.out.println(driverController.getPOV());
-    //     //if (driverController.getPOV() == 180)
+    //     //System.out.println(m_driverController.getPOV());
+    //     //if (m_driverController.getPOV() == 180)
     //     //  climbSubsystem.forwardMotor.set(1);
-    //     //else if (driverController.getPOV() == 0)
+    //     //else if (m_driverController.getPOV() == 0)
     //     //  climbSubsystem.forwardMotor.set(-1);
     //     double out = 0;
     //     if (dpad_down())
@@ -94,28 +94,28 @@ public class RobotContainer {
   }
 
   private boolean dpad_down() {
-    return driverController.getPOV() == 180;
+    return m_driverController.getPOV() == 180;
   }
 
   private boolean dpad_up() {
-    return driverController.getPOV() == 0;
+    return m_driverController.getPOV() == 0;
   }
 
   private int brev() {
-    return operatorController.getBButton() ? -1 : 1;
+    return m_operatorController.getBButton() ? -1 : 1;
   }
 
   private boolean isLeftDown() {
-    return operatorController.getLeftTriggerAxis() != 0;
+    return m_operatorController.getLeftTriggerAxis() != 0;
   }
 
   private void configureBindings() {
     //new Trigger(this::isSpooling)
     // .whileTrue(
-    //    new Shoot(shooterSubsystem, driverController)
+    //    new Shoot(shooterSubsystem, m_driverController)
     //  );
 
-    //new Trigger(driverController::getBButton)
+    //new Trigger(m_driverController::getBButton)
     //.whileTrue(
     //  new Expunge(shooterSubsystem)
     //);
@@ -130,14 +130,14 @@ public class RobotContainer {
     //     new ClimbMovement(climbSubsystem, false)
     //   );
 
-    new Trigger(operatorController::getLeftBumperButton)
+    new Trigger(m_operatorController::getLeftBumperButton)
       .whileTrue(
-        new Pull(shooterSubsystem, operatorController)
+        new Pull(shooterSubsystem, m_operatorController)
       );
 
-    new Trigger(operatorController::getRightBumperButton)
+    new Trigger(m_operatorController::getRightBumperButton)
       .whileTrue(
-        new MoveArmToPosition(intakeSubsystem, operatorController)
+        new MoveArmToPosition(intakeSubsystem, m_operatorController)
       );
   }
 
