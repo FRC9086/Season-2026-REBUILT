@@ -73,10 +73,6 @@ public final class Constants {
     public static final double kBackLeftChassisAngularOffset    = Math.PI;
     public static final double kBackRightChassisAngularOffset   = 0;
 
-    // Motor current limits
-    public static final int kSwerveCurrentLimit = 40;
-    public static final int kNeoCurrentLimit    = 20;
-
     // Boolean for Gyro 
     public static final boolean kGyroReversed = true;
   }

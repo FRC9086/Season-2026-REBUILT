@@ -18,10 +18,11 @@ public final class Configs {
             double drivingFactor = ModuleConstants.kWheelDiameterMeters * Math.PI
                 / ModuleConstants.kDrivingMotorReduction;
             double drivingVelocityFeedForward = 1 / ModuleConstants.kDriveWheelFreeSpeedRps;
+            int currentLimit = 40;
 
             drivingConfig
                 .idleMode(IdleMode.kBrake)
-                .smartCurrentLimit(SwerveConstants.kSwerveCurrentLimit);
+                .smartCurrentLimit(currentLimit);
             drivingConfig.encoder
                 .positionConversionFactor(drivingFactor) // meters
                 .velocityConversionFactor(drivingFactor / 60.0); // meters per second
@@ -39,10 +40,11 @@ public final class Configs {
         public static SparkMaxConfig getTurningConfig() {
             SparkMaxConfig turningConfig = new SparkMaxConfig();
             double turningFactor = Math.PI;                     // might increase turning speed
-                                                                // used to be 2 * Math.PI
+            int currentLimit     = 20;                          // used to be 2 * Math.PI
+            
             turningConfig
                 .idleMode(IdleMode.kBrake)
-                .smartCurrentLimit(SwerveConstants.kNeoCurrentLimit);
+                .smartCurrentLimit(currentLimit);
             turningConfig.absoluteEncoder
                 // Invert the turning encoder, since the output shaft rotates in the opposite
                 // direction of the steering motor in the MAXSwerve Module.
