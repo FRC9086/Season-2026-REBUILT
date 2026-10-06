@@ -6,6 +6,7 @@ import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
 
 import frc.robot.Constants.ModuleConstants;
+import frc.robot.Constants.SwerveConstants;
 
 public final class Configs {
     public static final class MAXSwerveModule {
@@ -20,7 +21,7 @@ public final class Configs {
 
             drivingConfig
                 .idleMode(IdleMode.kBrake)
-                .smartCurrentLimit(50);
+                .smartCurrentLimit(SwerveConstants.kSwerveCurrentLimit);
             drivingConfig.encoder
                 .positionConversionFactor(drivingFactor) // meters
                 .velocityConversionFactor(drivingFactor / 60.0); // meters per second
@@ -28,8 +29,8 @@ public final class Configs {
                 .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
                 // These are example gains you may need to them for your own robot!
                 .pid(0.04, 0, 0)
-                .velocityFF(drivingVelocityFeedForward)     // .velocityFF is deprecated
-                //.dFilter(drivingVelocityFeedForward)      // .dFilter might be replaced
+                //.velocityFF(drivingVelocityFeedForward)     // .velocityFF is deprecated
+                .dFilter(drivingVelocityFeedForward)      // .dFilter might be replaced
                 .outputRange(-1, 1);
                     
             return drivingConfig;
@@ -41,7 +42,7 @@ public final class Configs {
                                                                 // used to be 2 * Math.PI
             turningConfig
                 .idleMode(IdleMode.kBrake)
-                .smartCurrentLimit(20);
+                .smartCurrentLimit(SwerveConstants.kNeoCurrentLimit);
             turningConfig.absoluteEncoder
                 // Invert the turning encoder, since the output shaft rotates in the opposite
                 // direction of the steering motor in the MAXSwerve Module.
