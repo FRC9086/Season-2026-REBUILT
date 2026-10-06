@@ -50,10 +50,17 @@ public class MAXSwerveModule {
     m_turningClosedLoopController = m_turningSpark.getClosedLoopController();
 
     // Apply the respective configurations to the SPARKS.
-    m_drivingSpark.configure(Configs.MAXSwerveModule.getDrivingConfig(), ResetMode.kNoResetSafeParameters,
-        PersistMode.kNoPersistParameters);
-    m_turningSpark.configure(Configs.MAXSwerveModule.getTurningConfig(), ResetMode.kNoResetSafeParameters,
-        PersistMode.kNoPersistParameters);
+    m_drivingSpark.configure(
+      Configs.MAXSwerveModule.getDrivingConfig(),
+      ResetMode.kResetSafeParameters,
+      PersistMode.kPersistParameters
+    );
+
+    m_turningSpark.configure(
+      Configs.MAXSwerveModule.getTurningConfig(),
+      ResetMode.kResetSafeParameters,
+      PersistMode.kPersistParameters
+    );
 
     // Give the CAN bus 50 milliseconds to process the configurations 
     // before the DriveSubsystem tries to instantiate the next module.
