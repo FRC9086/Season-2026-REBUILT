@@ -69,8 +69,8 @@ public final class Constants {
 
     // Angular offsets of the modules relative to the chassis in radians
     public static final double kFrontLeftChassisAngularOffset =     (5 * Math.PI) / 4; // -90°
-    public static final double kFrontRightChassisAngularOffset =    0;           // 0°
-    public static final double kBackLeftChassisAngularOffset =      Math.PI;       // 180°
+    public static final double kFrontRightChassisAngularOffset =    Math.PI;           // 0°
+    public static final double kBackLeftChassisAngularOffset =      0;       // 180°
     public static final double kBackRightChassisAngularOffset =     Math.PI / 4;  // 90°
 
     // Boolean for Gyro 
