@@ -68,11 +68,10 @@ public final class Constants {
         new Translation2d(-kWheelBase / 2, -kTrackWidth / 2));
 
     // Angular offsets of the modules relative to the chassis in radians
-    public static final double kFrontLeftChassisAngularOffset = -Math.PI / 2; // -90°
-    public static final double kFrontRightChassisAngularOffset = 0;           // 0°
-    public static final double kBackLeftChassisAngularOffset = Math.PI;       // 180°
-    public static final double kBackRightChassisAngularOffset = Math.PI / 2;  // 90°
-
+    public static final double kFrontLeftChassisAngularOffset =     (5 * Math.PI) / 4; // -90°
+    public static final double kFrontRightChassisAngularOffset =    0;           // 0°
+    public static final double kBackLeftChassisAngularOffset =      Math.PI;       // 180°
+    public static final double kBackRightChassisAngularOffset =     Math.PI / 4;  // 90°
 
     // Boolean for Gyro 
     public static final boolean kGyroReversed = true;
