@@ -52,8 +52,8 @@ public final class Constants {
 
     // Driving Parameters - Note that these are not the maximum capable speeds of
     // the robot, rather the allowed maximum speeds
-    public static final double kMaxSpeedMetersPerSecond = 10;                                // meters per second
-    public static final double kMaxAngularSpeed = Math.PI / 2.0;                            // 360 degrees in 8 seconds
+    public static final double kMaxSpeedMetersPerSecond = 4.6;                                // meters per second
+    public static final double kMaxAngularSpeed = 1.5 * Math.PI;                            // 360 degrees in 8 seconds
 
     // Chassis configuration
     public static final double kTrackWidth = Units.inchesToMeters(20.0);
@@ -90,6 +90,9 @@ public final class Constants {
     // teeth on the bevel pinion
     public static final double kDrivingMotorReduction = (45.0 * 22) / (kDrivingMotorPinionTeeth * 15);
     public static final double kDriveWheelFreeSpeedRps = (kDrivingMotorFreeSpeedRps * kWheelCircumferenceMeters) / kDrivingMotorReduction;
+  
+    public static final int kDrivingMotorCurrentLimit = 50; // Amps
+    public static final int kTurningMotorCurrentLimit = 20; // Amps
   }
   
   // public static final class ArmConstants {

@@ -23,6 +23,7 @@ import com.studica.frc.AHRS;
 import frc.robot.Constants.SwerveConstants;
 import frc.robot.Constants.CANConstants;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import frc.robot.handlers.MAXSwerveModule;
@@ -97,17 +98,22 @@ public class DriveSubsystem extends SubsystemBase {
     HAL.report(tResourceType.kResourceType_RobotDrive, tInstances.kRobotDriveSwerve_MaxSwerve);
   }
 
+  public Rotation2d getRotation2d() {
+    return Rotation2d.fromDegrees(SwerveConstants.kGyroReversed ? -m_gyro.getAngle() : m_gyro.getAngle());
+  }
+
   @Override
   public void periodic() {
     // Update the odometry in the periodic block
     m_odometry.update(
-        Rotation2d.fromDegrees(getHeading()),
+        getRotation2d(),
         new SwerveModulePosition[] {
-            m_frontLeft.getPosition(),
-            m_frontRight.getPosition(),
-            m_rearLeft.getPosition(),
-            m_rearRight.getPosition()
-        });
+          m_frontLeft.getPosition(),
+          m_frontRight.getPosition(),
+          m_rearLeft.getPosition(),
+          m_rearRight.getPosition()
+        }
+      );
 
     //System.out.println("Gyro Heading: " + getHeading());
   }
@@ -193,11 +199,11 @@ public class DriveSubsystem extends SubsystemBase {
    */
   public void setModuleStates(SwerveModuleState[] desiredStates) {
     SwerveDriveKinematics.desaturateWheelSpeeds(
-        desiredStates, SwerveConstants.kMaxSpeedMetersPerSecond);
-    m_frontLeft.setDesiredState(desiredStates[0]);
-    m_frontRight.setDesiredState(desiredStates[1]);
-    m_rearLeft.setDesiredState(desiredStates[2]);
-    m_rearRight.setDesiredState(desiredStates[3]);
+      desiredStates, SwerveConstants.kMaxSpeedMetersPerSecond);
+      m_frontLeft.setDesiredState(desiredStates[0]);
+      m_frontRight.setDesiredState(desiredStates[1]);
+      m_rearLeft.setDesiredState(desiredStates[2]);
+      m_rearRight.setDesiredState(desiredStates[3]);
   }
 
   /** Resets the drive encoders to currently read a position of 0. */
@@ -228,11 +234,7 @@ public class DriveSubsystem extends SubsystemBase {
   public Command zeroHeadingCommand() {
     // Inline construction of command goes here
     // Subsystem: RunOnce implicitly requires 'this' subsystem
-    return runOnce(
-      () -> {
-        zeroHeading();
-      }
-    );
+    return Commands.runOnce(this::zeroHeading);
   }
     
   /**
@@ -244,7 +246,7 @@ public class DriveSubsystem extends SubsystemBase {
     //System.out.println("Gyro Heading: " + m_gyro.getYaw());
     double my_yaw;
     if (SwerveConstants.kGyroReversed) {
-      my_yaw = - m_gyro.getYaw();
+      my_yaw = -m_gyro.getYaw();
     } else {
       my_yaw = m_gyro.getYaw();
     }
