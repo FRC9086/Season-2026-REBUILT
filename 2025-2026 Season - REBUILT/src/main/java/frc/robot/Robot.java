@@ -24,9 +24,6 @@ public class Robot extends TimedRobot {
   private final Timer m_timer = new Timer();
   private final RobotContainer m_robotContainer;
 
-  // Create PDH
-  PowerDistribution m_pdh = new PowerDistribution(CANConstants.kPDHCanId, ModuleType.kRev);
-
   public static boolean teleop = false;
   private Boolean scheduledAuto = false;
 

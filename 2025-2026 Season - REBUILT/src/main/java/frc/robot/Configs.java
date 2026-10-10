@@ -3,9 +3,6 @@ package frc.robot;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.FeedbackSensor;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
-
-
-import frc.robot.Constants.ModuleConstants;
 import frc.robot.Constants.SwerveConstants;
 
 public final class Configs {
@@ -15,9 +12,9 @@ public final class Configs {
             SparkMaxConfig drivingConfig = new SparkMaxConfig();
             
             // Use module constants to calculate conversion factors and feed forward gain.
-            double drivingFactor = ModuleConstants.kWheelDiameterMeters * Math.PI
-                / ModuleConstants.kDrivingMotorReduction;
-            double drivingVelocityFeedForward = 1 / ModuleConstants.kDriveWheelFreeSpeedRps;
+            double drivingFactor = SwerveConstants.kWheelDiameterMeters * Math.PI
+                / SwerveConstants.kDrivingMotorReduction;
+            double drivingVelocityFeedForward = 1 / SwerveConstants.kDriveWheelFreeSpeedRps;
             int currentLimit = 40;
 
             drivingConfig
@@ -39,8 +36,8 @@ public final class Configs {
 
         public static SparkMaxConfig getTurningConfig() {
             SparkMaxConfig turningConfig = new SparkMaxConfig();
-            double turningFactor = Math.PI;                     // might increase turning speed
-            int currentLimit     = 20;                          // used to be 2 * Math.PI
+            double turningFactor = SwerveConstants.kWheelDiameterMeters * Math.PI;        // might increase turning speed
+            int currentLimit     = 20;
             
             turningConfig
                 .idleMode(IdleMode.kBrake)
