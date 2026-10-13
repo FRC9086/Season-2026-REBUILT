@@ -35,8 +35,8 @@ public final class Configs {
 
         public static SparkMaxConfig getTurningConfig() {
             SparkMaxConfig turningConfig = new SparkMaxConfig();
-            double turningFactor = SwerveConstants.kWheelDiameterMeters * Math.PI;  // Turning speed is increased in Constants.java
-                                                                                    // under kMaxAngularSpeed
+            double turningFactor = 2 * Math.PI; // Turning speed is increased in Constants.java
+                                                // under kMaxAngularSpeed
             turningConfig
                 .idleMode(IdleMode.kBrake)
                 .smartCurrentLimit(SwerveConstants.kTurningMotorCurrentLimit);

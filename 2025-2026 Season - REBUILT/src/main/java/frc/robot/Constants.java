@@ -43,8 +43,7 @@ public final class Constants {
   public static final class OIConstants {
 
     public static final int kDriverControllerPort   = 1;
-    public static final int kOperatorControllerPort = 0;
-    public static final int kScoringControllerPort  = 999; 
+    public static final int kOperatorControllerPort = 0; 
     public static final double kDriveDeadband       = 0.15; // 0.05
   }
   
@@ -52,8 +51,9 @@ public final class Constants {
 
     // Driving Parameters - Note that these are not the maximum capable speeds of
     // the robot, rather the allowed maximum speeds
-    public static final double kMaxSpeedMetersPerSecond = 4.6;                                // meters per second
-    public static final double kMaxAngularSpeed = 1.5 * Math.PI;                            // 360 degrees in 8 seconds
+    public static final double kMaxSpeedMetersPerSecond = 7.5;                                // meters per second
+    public static final double kMaxAngularSpeed = (kMaxSpeedMetersPerSecond / 2) * Math.PI; // Shouldnt rely on kMaxSpeedMetersPerSecond
+                                                                                            // great turning speed
 
     // Chassis configuration
     public static final double kTrackWidth = Units.inchesToMeters(20.0);
@@ -68,10 +68,10 @@ public final class Constants {
       new Translation2d(-kWheelBase / 2, -kTrackWidth / 2));
 
     // Angular offsets of the modules relative to the chassis in radians
-    public static final double kFrontLeftChassisAngularOffset   = (5 * Math.PI) / 4; // -90°
-    public static final double kFrontRightChassisAngularOffset  = Math.PI;           // 0°
-    public static final double kBackLeftChassisAngularOffset    = 0;       // 180°
-    public static final double kBackRightChassisAngularOffset   = Math.PI / 4;  // 90°
+    public static final double kFrontLeftChassisAngularOffset   = -Math.PI / 2;
+    public static final double kFrontRightChassisAngularOffset  = 0;
+    public static final double kBackLeftChassisAngularOffset    = Math.PI;
+    public static final double kBackRightChassisAngularOffset   = Math.PI / 2;
 
     // Boolean for Gyro 
     public static final boolean kGyroReversed = true;
