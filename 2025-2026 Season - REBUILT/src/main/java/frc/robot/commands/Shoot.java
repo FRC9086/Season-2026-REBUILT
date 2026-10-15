@@ -6,19 +6,23 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.subsystems.ShooterSubsystem;
+import edu.wpi.first.wpilibj2.command.Command;
 
-public class Shoot extends SequentialCommandGroup {
-    public Shoot(ShooterSubsystem shooter, XboxController controller) {
-        addCommands(
-            new ParallelRaceGroup(
-                new SequentialCommandGroup(
-                    new StartEndCommand(
-                        () -> shooter.startShootingSystem(controller.getLeftTriggerAxis()),
-                        shooter::stopShootingSystem
-                    ).withTimeout(1),
-                    new WaitCommand(1)
-                )
-            )
-        );
+public class Shoot extends Command {
+    private final ShooterSubsystem m_shooter;
+
+    public Shoot(ShooterSubsystem shooter) {
+        m_shooter = shooter;
+        addRequirements(m_shooter);
+    }
+
+    @Override 
+    public void initialize() {
+        m_shooter.startShootingSystem(1.0);
+    }
+
+    @Override 
+    public void end(boolean interrupted) {
+        m_shooter.stopShootingSystem();
     }
 }

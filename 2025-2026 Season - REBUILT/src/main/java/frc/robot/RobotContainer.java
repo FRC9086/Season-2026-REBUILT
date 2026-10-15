@@ -132,7 +132,7 @@ public class RobotContainer {
 
     new Trigger(m_operatorController::getLeftBumperButton)
       .whileTrue(
-        new Pull(shooterSubsystem, m_operatorController)
+        new Pull(shooterSubsystem, false)
       );
 
     new Trigger(m_operatorController::getRightBumperButton)
