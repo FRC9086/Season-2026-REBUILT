@@ -5,6 +5,7 @@
 package frc.robot;
 
 import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.wpilibj.PS5Controller;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.RobotDriveBase;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -33,7 +34,7 @@ public class RobotContainer {
   // Controller
   // Driver is port 1 and Operator is port 0 under usb connections in Driver Station      // This can be changed in Constants.java
   private final XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
-  private final XboxController m_operatorController = new XboxController(OIConstants.kOperatorControllerPort);
+  private final PS5Controller m_operatorController = new PS5Controller(OIConstants.kOperatorControllerPort);
 
   public RobotContainer() {
     configureBindings();
@@ -59,14 +60,14 @@ public class RobotContainer {
 
     intakeSubsystem.setDefaultCommand(
       new RunCommand(() -> {
-        double pullerSpool = m_operatorController.getRightTriggerAxis() * brev();
+        double pullerSpool = m_operatorController.getR2Axis() * brev();
 
         intakeSubsystem.setSpeed(pullerSpool);
       }, intakeSubsystem));
 
     shooterSubsystem.setDefaultCommand(
       new RunCommand(() -> {
-        double shooterSpool = m_operatorController.getLeftTriggerAxis() * brev();
+        double shooterSpool = m_operatorController.getL2Axis() * brev();
         //double pullTrigger = m_driverController.getRightTriggerAxis() == 1 ? 1 : 0;
 
         shooterSubsystem.startShootingSystem(shooterSpool);
@@ -102,11 +103,11 @@ public class RobotContainer {
   }
 
   private int brev() {
-    return m_operatorController.getBButton() ? -1 : 1;
+    return m_operatorController.getCircleButton() ? -1 : 1;
   }
 
   private boolean isLeftDown() {
-    return m_operatorController.getLeftTriggerAxis() != 0;
+    return m_operatorController.getL2Axis() != 0;
   }
 
   private void configureBindings() {
@@ -130,12 +131,12 @@ public class RobotContainer {
     //     new ClimbMovement(climbSubsystem, false)
     //   );
 
-    new Trigger(m_operatorController::getLeftBumperButton)
+    new Trigger(m_operatorController::getL1Button)
       .whileTrue(
-        new Pull(shooterSubsystem, false)
+        new Pull(shooterSubsystem, m_operatorController)
       );
 
-    new Trigger(m_operatorController::getRightBumperButton)
+    new Trigger(m_operatorController::getR1Button)
       .whileTrue(
         new MoveArmToPosition(intakeSubsystem, m_operatorController)
       );
