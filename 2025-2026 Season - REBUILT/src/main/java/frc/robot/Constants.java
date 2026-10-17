@@ -36,7 +36,7 @@ public final class Constants {
     public static final int kUpDownMotor = 11;
 
     public static final int kPullerMotorId = 12;      
-    public static final int kShootingMotorId = 13;
+    public static final int kShootingMotorId = 23;
   }
 
   // Driver Station / controller constants
@@ -51,7 +51,7 @@ public final class Constants {
 
     // Driving Parameters - Note that these are not the maximum capable speeds of
     // the robot, rather the allowed maximum speeds
-    public static final double kMaxSpeedMetersPerSecond = 7.5;                                // meters per second
+    public static final double kMaxSpeedMetersPerSecond = 10;                                // meters per second
     public static final double kMaxAngularSpeed = (kMaxSpeedMetersPerSecond / 2) * Math.PI; // Shouldnt rely on kMaxSpeedMetersPerSecond
                                                                                             // great turning speed
 

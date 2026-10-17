@@ -34,14 +34,14 @@ public class Auto extends SequentialCommandGroup {
         addCommands(
             // Drive Backwards
             new RunCommand(() -> drive.zeroHeading()).withTimeout(0.1),
-            // new RunCommand(() -> drive.drive(0.5, 0.0, 0.0, false, true), drive).withTimeout(2.5),
-            // new RunCommand(() -> drive.drive(0.0, 0.0, 0.0, false, true), drive).withTimeout(0.5),
+            new RunCommand(() -> drive.drive(-0.5, 0.0, 0.0, false, true), drive).withTimeout(2.5),
+            new RunCommand(() -> drive.drive(0.0, 0.0, 0.0, false, true), drive).withTimeout(0.5),
 
             // Move to hub based on start position
             // new RunCommand(() -> drive.drive(xSpeed * xDir, 0.0, 0.0, false, true), drive).withTimeout(timeout),
 
             // Shooter
-            new RunCommand(() -> shooter.startShootingSystem(1.0), shooter).withTimeout(4.0),
+            new RunCommand(() -> shooter.startShootingSystem(0.9), shooter).withTimeout(4.0),
             new RunCommand(() -> shooter.pullMotor(0.9), shooter).withTimeout(2.0),
 
             new InstantCommand(() -> {

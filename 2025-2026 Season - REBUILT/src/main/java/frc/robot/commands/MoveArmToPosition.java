@@ -1,6 +1,6 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.PS5Controller;
+import edu.wpi.first.wpilibj.PS4Controller;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
@@ -14,13 +14,13 @@ public class MoveArmToPosition extends SequentialCommandGroup {
     public static final double TOLERANCE = 0.1;
     //private final double target;
 
-    public MoveArmToPosition(IntakeSubsystem arm, PS5Controller controller) {
+    public MoveArmToPosition(IntakeSubsystem arm, XboxController controller) {
         addCommands(
             new ParallelRaceGroup(
                 new SequentialCommandGroup(
                     new StartEndCommand(
                         () -> {
-                            arm.moveArm(.2 * (controller.getCircleButton() ? -1 : 1));
+                            arm.moveArm(.2 * (controller.getBButton() ? -1 : 1));
                         },
                         () -> {
                             arm.stopArm();
