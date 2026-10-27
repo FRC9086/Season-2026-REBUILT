@@ -21,7 +21,7 @@ import com.studica.frc.AHRS;
 //import com.studica.frc.AHRS.NavXComType;      Not used
 
 import frc.robot.Constants.SwerveConstants;
-import frc.robot.Constants.CANConstants;
+import frc.robot.Constants.CanConstants;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -37,23 +37,23 @@ public class DriveSubsystem extends SubsystemBase {
 
   // Create MAXSwerveModules
   private final MAXSwerveModule m_frontLeft = new MAXSwerveModule(
-      CANConstants.kFrontLeftDrivingCanId,
-      CANConstants.kFrontLeftTurningCanId,
+      CanConstants.kFrontLeftDrivingCanId,
+      CanConstants.kFrontLeftTurningCanId,
       SwerveConstants.kFrontLeftChassisAngularOffset);
 
   private final MAXSwerveModule m_frontRight = new MAXSwerveModule(
-      CANConstants.kFrontRightDrivingCanId,
-      CANConstants.kFrontRightTurningCanId,
+      CanConstants.kFrontRightDrivingCanId,
+      CanConstants.kFrontRightTurningCanId,
       SwerveConstants.kFrontRightChassisAngularOffset);
 
   private final MAXSwerveModule m_rearLeft = new MAXSwerveModule(
-      CANConstants.kRearLeftDrivingCanId,
-      CANConstants.kRearLeftTurningCanId,
+      CanConstants.kRearLeftDrivingCanId,
+      CanConstants.kRearLeftTurningCanId,
       SwerveConstants.kBackLeftChassisAngularOffset);
 
   private final MAXSwerveModule m_rearRight = new MAXSwerveModule(
-      CANConstants.kRearRightDrivingCanId,
-      CANConstants.kRearRightTurningCanId,
+      CanConstants.kRearRightDrivingCanId,
+      CanConstants.kRearRightTurningCanId,
       SwerveConstants.kBackRightChassisAngularOffset);
 
   // Create a variable "gyro" using the class AHRS from Studia.Com
@@ -159,7 +159,7 @@ public class DriveSubsystem extends SubsystemBase {
     double ySpeedDelivered = ySpeed * SwerveConstants.kMaxSpeedMetersPerSecond;
     double rotDelivered = rot * SwerveConstants.kMaxAngularSpeed;
 
-    /*var defaultStates = CANConstants.kDriveKinematics.toSwerveModuleStates(ChassisSpeeds.fromFieldRelativeSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered,
+    /*var defaultStates = CanConstants.kDriveKinematics.toSwerveModuleStates(ChassisSpeeds.fromFieldRelativeSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered,
                 Rotation2d.fromDegrees(getHeading())));*/
 
     var swerveModuleStates = SwerveConstants.kDriveKinematics.toSwerveModuleStates(

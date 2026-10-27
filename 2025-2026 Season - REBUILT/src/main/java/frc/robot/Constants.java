@@ -13,7 +13,7 @@ import edu.wpi.first.math.util.Units;
 // ========================================================
 // ========================================================
 public final class Constants {
-  public static final class CANConstants {
+  public static final class CanConstants {
 
     // Power Distrobution Hub CAN ID
     public static final int kPDHCanId               =  1;

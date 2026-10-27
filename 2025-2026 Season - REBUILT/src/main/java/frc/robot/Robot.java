@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.Constants.CANConstants;
+import frc.robot.Constants.CanConstants;
 
 import com.lumynlabs.domain.config.LumynDeviceConfig.Network;
 
